@@ -23,6 +23,7 @@ namespace ShapeDemo
         public MainWindow()
         {
             InitializeComponent();
+           // scale1.ScaleX = 8;
         }
     }
 }
