@@ -24,7 +24,7 @@ namespace EventSample
         public MainWindow()
         {
             InitializeComponent();
-            var timer = new DispatcherTimer(DispatcherPriority.ApplicationIdle);
+            var timer = new DispatcherTimer(DispatcherPriority.Background);
             timer.Tick += (sender, e) =>
             {
                 angleRotate.Angle += 0.5;
@@ -33,11 +33,20 @@ namespace EventSample
             timer.IsEnabled = true;
         }
 
-
+        private double _left = 20;
 
         private void OnButtonClick(object sender, RoutedEventArgs e)
         {
-            angleRotate.Angle += 1;
+            // angleRotate.Angle += 1;
+
+            Canvas.SetLeft(button1, _left++);
+            
+            
+        }
+
+        private void OnGeo(object sender, RoutedEventArgs e)
+        {
+            combinedGeo1.Geometry1 = new EllipseGeometry() { RadiusX = 44, RadiusY = 144 };
         }
     }
 }
