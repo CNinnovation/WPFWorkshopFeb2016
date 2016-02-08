@@ -8,12 +8,29 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Canvas>
-            <Button Canvas.Left="20" Canvas.Top="20" Content="Click Me!" Click="OnButtonClick" />
+            <RepeatButton x:Name="button1" Canvas.Left="20" Canvas.Top="20" Content="Click Me!" Click="OnButtonClick" />
+            <Button Canvas.Left="100" Canvas.Top="40" Content="Geo" Click="OnGeo" />
             <Ellipse Canvas.Left="250" Canvas.Top="250" Width="200" Height="40" Fill="Blue">
                 <Ellipse.RenderTransform>
                     <RotateTransform x:Name="angleRotate" Angle="90" />
                 </Ellipse.RenderTransform>
             </Ellipse>
+            <Path Canvas.Top="40" Canvas.Left="40" Fill="Red" Data="M 10,100 L 100,100 M 20,200 L 200,400 " StrokeThickness="4" Stroke="Yellow">
+
+            </Path>
+
+            <Path Canvas.Top="0" Canvas.Left="250" Fill="Blue" Stroke="Yellow" StrokeThickness="5">
+                <Path.Data>
+                    <CombinedGeometry GeometryCombineMode="Union" x:Name="combinedGeo1">
+                        <CombinedGeometry.Geometry1>
+                            <EllipseGeometry Center="80,60" RadiusX="80" RadiusY="40" />
+                        </CombinedGeometry.Geometry1>
+                        <CombinedGeometry.Geometry2>
+                            <RectangleGeometry Rect="30,60 105 50" />
+                        </CombinedGeometry.Geometry2>
+                    </CombinedGeometry>
+                </Path.Data>
+            </Path>
         </Canvas>
     </Grid>
 </Window>
