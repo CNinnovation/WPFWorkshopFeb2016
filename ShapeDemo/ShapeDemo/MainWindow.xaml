@@ -7,12 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <!--<Grid.LayoutTransform>
-            <ScaleTransform x:Name="scale1" ScaleX="3" ScaleY="3" />
-        </Grid.LayoutTransform>-->
-        <Viewbox Stretch="UniformToFill">
-            <Canvas Width="100" Height="100">
-                <!--<Canvas.LayoutTransform>
+        <DockPanel>
+            <Slider x:Name="slider1" DockPanel.Dock="Top" Value="1" Minimum="0.1" Maximum="3" />
+            <Slider x:Name="slider2" DockPanel.Dock="Top" Value="20" Minimum="0" Maximum="400" />
+            <Canvas >
+                <Canvas.LayoutTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="{Binding ElementName=slider1, Path=Value}"
+                                    ScaleY="{Binding ElementName=slider1, Path=Value}" />
+                    </TransformGroup>
+
+                </Canvas.LayoutTransform>
+
+                <Canvas Height="100" Canvas.Left="{Binding ElementName=slider2, Path=Value}" Canvas.Top="100">
+                    <!--<Canvas.LayoutTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="0.5" ScaleY="0.5" />
                     <RotateTransform Angle="90" />
@@ -20,7 +28,7 @@
 
             </Canvas.LayoutTransform>-->
 
-                <!--<Path Fill="Green" Stroke="Black" StrokeThickness="3">
+                    <!--<Path Fill="Green" Stroke="Black" StrokeThickness="3">
                 <Path.Data>
                     <CombinedGeometry GeometryCombineMode="Xor">
                         <CombinedGeometry.Geometry1>
@@ -33,26 +41,29 @@
                 </Path.Data>
             </Path>-->
 
-                <Ellipse Fill="Yellow" Stroke="Black"
-     StrokeThickness="7"
-     Width="100" Height="100">
+                    <Ellipse Fill="Yellow" Stroke="Black"
+            			StrokeThickness="7"
+            			Width="100" Height="100"/>
 
-                </Ellipse>
+                    <Ellipse Fill="Black"
+            			Width="10" Height="15"
+            			Canvas.Left="28" Canvas.Top="28" />
 
-                <Ellipse Fill="Black"
-     Width="10" Height="15"
-     Canvas.Left="28" Canvas.Top="28" />
+                    <Ellipse Fill="Black"
+            			Width="10" Height="15"
+            			Canvas.Left="62" Canvas.Top="28"/>
 
-                <Ellipse Fill="Black"
-     Width="10" Height="15"
-     Canvas.Left="62" Canvas.Top="28">
-                </Ellipse>
-
-                <Path Stroke="Black"
-     StrokeThickness="6"
-     Data="M 30,60 Q 50,90 70,60" />
+                    <Path Stroke="Black"
+            			StrokeThickness="6"
+            			Data="M 30,60 Q 50,90 70,60" />
+                </Canvas>
             </Canvas>
-        </Viewbox>
+        </DockPanel>
+        <!--<Grid.LayoutTransform>
+            <ScaleTransform x:Name="scale1" ScaleX="3" ScaleY="3" />
+        </Grid.LayoutTransform>-->
+        <!--<Viewbox Stretch="UniformToFill">-->
+        <!--</Viewbox>-->
 
 
     </Grid>
