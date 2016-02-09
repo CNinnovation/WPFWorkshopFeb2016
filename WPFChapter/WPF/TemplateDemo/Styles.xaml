@@ -29,6 +29,7 @@
                         <ContentPresenter Name="GelButtonContent" VerticalAlignment="Center" HorizontalAlignment="Center" Content="{TemplateBinding Content}" />
                     </Grid>
                     <ControlTemplate.Triggers>
+
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Ellipse.Fill" TargetName="GelBackground">
                                 <Setter.Value>
