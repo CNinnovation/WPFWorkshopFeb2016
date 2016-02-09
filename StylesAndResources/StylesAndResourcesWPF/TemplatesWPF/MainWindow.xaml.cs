@@ -24,5 +24,11 @@ namespace TemplatesWPF
         {
             InitializeComponent();
         }
+
+        private void OnStyledButtons(object sender, RoutedEventArgs e)
+        {
+            StyledButtons buttonStyles = new StyledButtons();
+            buttonStyles.Show();
+        }
     }
 }
