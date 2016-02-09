@@ -32,19 +32,41 @@ namespace MySimpleEditor
             App.Current.Shutdown();
         }
 
+        private string _openedFileName;
+
         private void OnOpen(object sender, ExecutedRoutedEventArgs e)
         {
             var dlg = new OpenFileDialog();
             if (dlg.ShowDialog() == true)
             {
+                 _openedFileName = dlg.FileName;
+                text1.Text = File.ReadAllText(_openedFileName);
+            }
+        }
+
+        private void OnSaveAs(object sender, ExecutedRoutedEventArgs e)
+        {
+            var dlg = new SaveFileDialog();
+            if (dlg.ShowDialog() == true)
+            {
                 string fileName = dlg.FileName;
-                text1.Text = File.ReadAllText(fileName);
+                File.WriteAllText(fileName, text1.Text);
             }
         }
 
         private void OnSave(object sender, ExecutedRoutedEventArgs e)
         {
 
+        }
+
+        private void OnMyAction(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("My Action");
+        }
+
+        private void CanMyAction(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }
