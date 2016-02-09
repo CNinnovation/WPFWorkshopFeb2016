@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace StylesDemo
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void OnOneClick(object sender, RoutedEventArgs e)
+        {
+            RadialGradientBrush brush = this.Resources["redBrush"] as RadialGradientBrush;
+
+            var gradientStops = new GradientStopCollection();
+            gradientStops.Add(new GradientStop(Colors.LightBlue, 0));
+            gradientStops.Add(new GradientStop(Colors.DarkBlue, 1));
+            LinearGradientBrush newBrush = new LinearGradientBrush(gradientStops);
+            this.Resources["redBrush"] = newBrush;
+        }
+    }
+}

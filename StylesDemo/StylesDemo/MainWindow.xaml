@@ -1,0 +1,28 @@
+﻿<Window x:Class="StylesDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StylesDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <RadialGradientBrush x:Key="redBrush">
+            <GradientStop Offset="0" Color="Yellow" />
+            <GradientStop Offset="1" Color="Red" />
+        </RadialGradientBrush>
+        <Style TargetType="Button" x:Key="redButtonStyle">
+            <Setter Property="Background" Value="{DynamicResource redBrush}" />
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="Width" Value="120" />
+            <Setter Property="Height" Value="80" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <Button Style="{StaticResource redButtonStyle}" Click="OnOneClick">One</Button>
+            <Button Style="{StaticResource redButtonStyle}">Two</Button>
+            <Button Style="{StaticResource redButtonStyle}">Three</Button>
+        </StackPanel>
+    </Grid>
+</Window>
