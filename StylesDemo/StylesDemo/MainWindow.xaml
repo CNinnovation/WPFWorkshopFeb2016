@@ -17,12 +17,29 @@
             <Setter Property="Width" Value="120" />
             <Setter Property="Height" Value="80" />
         </Style>
+
+        <Style TargetType="Button" x:Key="myButtonStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <Ellipse Fill="{TemplateBinding Background}" Width="{TemplateBinding Width}"  Height="90" />
+                            <!--<TextBlock Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />-->
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <StackPanel>
             <Button Style="{StaticResource redButtonStyle}" Click="OnOneClick">One</Button>
             <Button Style="{StaticResource redButtonStyle}">Two</Button>
-            <Button Style="{StaticResource redButtonStyle}">Three</Button>
+            <Button Width="400" Background="Green" Style="{StaticResource myButtonStyle}" Click="OnButtonClick">Hello Button!</Button>
         </StackPanel>
     </Grid>
 </Window>

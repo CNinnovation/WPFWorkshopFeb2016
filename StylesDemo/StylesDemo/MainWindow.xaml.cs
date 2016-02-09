@@ -35,5 +35,10 @@ namespace StylesDemo
             LinearGradientBrush newBrush = new LinearGradientBrush(gradientStops);
             this.Resources["redBrush"] = newBrush;
         }
+
+        private void OnButtonClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("clicked");
+        }
     }
 }
