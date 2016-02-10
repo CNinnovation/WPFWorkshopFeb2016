@@ -31,9 +31,9 @@
 
     </Window.Resources>
     <Grid>
-        <TabControl ItemsSource="{Binding}" ItemTemplate="{DynamicResource MyItemTemplate}" ContentTemplateSelector="{StaticResource MyContentTemplateSelector}">
-
-        </TabControl>
+        <TabControl ItemsSource="{Binding}" 
+                    ItemTemplate="{DynamicResource MyItemTemplate}" 
+                    ContentTemplateSelector="{StaticResource MyContentTemplateSelector}" />
 
     </Grid>
 </Window>
