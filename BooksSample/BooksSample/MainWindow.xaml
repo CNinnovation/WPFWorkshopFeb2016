@@ -7,30 +7,65 @@
         xmlns:services="clr-namespace:BooksSample.Services"
         xmlns:models="clr-namespace:BooksSample.Models"
         xmlns:conv="clr-namespace:BooksSample.Converters"
+        xmlns:utils="clr-namespace:BooksSample.Utilities"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
         <ObjectDataProvider x:Key="myBook" ObjectType="{x:Type services:BooksRepository}" MethodName="GetTheBook" />
         <conv:StringArrayToStringConverter x:Key="StringArrayToStringConverter" />
+
+        <DataTemplate DataType="{x:Type models:Book}" x:Key="defaultBookTemplate">
+            <Border BorderBrush="Violet" BorderThickness="3" Background="LightBlue">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition SharedSizeGroup="BookWidth" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Text="{Binding Title, Mode=OneWay}" />
+                    <TextBlock Grid.Row="1" Text="{Binding Publisher, Mode=OneWay}" />
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type models:Book}" x:Key="wroxBookTemplate">
+            <Border BorderBrush="Violet" BorderThickness="3" Background="Red">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition SharedSizeGroup="BookWidth" />
+                    </Grid.ColumnDefinitions>
+                    <Expander Grid.Row="0" >
+                        <Expander.Header>
+                            <TextBlock Foreground="White" Text="{Binding Title, Mode=OneWay}" />
+                        </Expander.Header>
+                        <TextBlock  Foreground="White" Text="{Binding Publisher, Mode=OneWay}" />
+                    </Expander>
+
+
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <utils:BookTemplateSelector x:Key="BookTemplateSelector"
+            DefaultBookTemplate="{StaticResource defaultBookTemplate}"
+            WroxBookTemplate="{StaticResource wroxBookTemplate}" />
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="Violet" BorderThickness="3" Background="LightBlue">
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Text="{Binding Title, Mode=OneWay}" />
-                            <TextBlock Text="{Binding Publisher, Mode=OneWay}" />
-                        </StackPanel>
-                    </Border>
-
-                </DataTemplate>
-            </ListBox.ItemTemplate>
+        <ListBox ItemsSource="{Binding}"
+                 Grid.IsSharedSizeScope="True"
+                 ItemTemplateSelector="{StaticResource BookTemplateSelector}" 
+                 IsSynchronizedWithCurrentItem="True">
         </ListBox>
+        <!--<StackPanel Grid.Column="1" DataContext="{StaticResource myBook}">-->
         <StackPanel Grid.Column="1">
             <StackPanel.Resources>
                 <Style TargetType="TextBox">
@@ -41,7 +76,8 @@
             <TextBox Text="{Binding /Publisher, Mode=TwoWay}" />
             <TextBox Text="{Binding /Isbn, Mode=OneTime}" />
             <TextBlock Text="{Binding /Authors, Mode=OneTime, Converter={StaticResource StringArrayToStringConverter}, ConverterParameter=', '}" />
-            <Label Content="{Binding /}" />
+            <!--<Label Content="{Binding /}" ContentTemplate="{StaticResource defaultBookTemplate}" />-->
+            <Label Content="{Binding /}" ContentTemplateSelector="{StaticResource BookTemplateSelector}" />
             <Button Margin="4" Click="OnShowBook">Show Book</Button>
             <Button Margin="4" Click="OnChangeBook">Cange Book</Button>
             <Button Margin="4" Click="OnAddBook">Add a book</Button>

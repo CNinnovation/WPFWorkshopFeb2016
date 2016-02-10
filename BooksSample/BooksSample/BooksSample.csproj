@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\StringArrayToStringConverter.cs" />
     <Compile Include="Services\BooksRepository.cs" />
+    <Compile Include="Utilities\BookTemplateSelector.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

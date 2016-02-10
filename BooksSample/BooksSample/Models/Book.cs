@@ -1,9 +1,5 @@
 ﻿using MySuperCoolFramework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BooksSample.Models
 {
@@ -43,8 +39,18 @@ namespace BooksSample.Models
 
         public string Isbn { get; set; }
 
-
+        // C# 6 readonly property
         public IEnumerable<string> Authors { get; }  // C# 6
+
+        //// C# 5 - readonly property
+        //private readonly IEnumerable<string> _auth;
+        //public IEnumerable<string> Auth
+        //{
+        //    get
+        //    {
+        //        return _auth;
+        //    }
+        //}
 
         public override string ToString() => Title;  // C# 6 - expression bodied member
 

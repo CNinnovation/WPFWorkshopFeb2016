@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MySuperCoolFramework
 {
@@ -21,7 +17,7 @@ namespace MySuperCoolFramework
             //    handler(this, new PropertyChangedEventArgs(propertyName));
             //}
 
-            // C# 6 - Elvis operator - null conditional operator
+            // C# 6 - Elvis operator (null conditional operator)
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
