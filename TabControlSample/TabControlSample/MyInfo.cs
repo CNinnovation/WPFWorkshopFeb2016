@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TabControlSample
+{
+    public class MyInfo
+    {
+        public string Header { get; set; }
+
+        public string Content { get; set; }
+        public override string ToString() => $"{Header} {Content}";
+    }
+}
