@@ -1,0 +1,27 @@
+﻿<Window x:Class="AnotherTreeSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnotherTreeSample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <HierarchicalDataTemplate DataType="{x:Type local:SomeData}" ItemsSource="{Binding Inners}">
+            <StackPanel>
+                <TextBlock Text="{Binding Text}" />
+            </StackPanel>
+        </HierarchicalDataTemplate>
+
+        <DataTemplate DataType="{x:Type local:Inner}">
+            <StackPanel>
+                <TextBlock Text="{Binding Number}" />
+            </StackPanel>
+        </DataTemplate>
+
+
+    </Window.Resources>
+    <Grid>
+        <TreeView ItemsSource="{Binding}" />
+    </Grid>
+</Window>
